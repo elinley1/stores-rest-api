@@ -2,6 +2,8 @@ from models.store import StoreModel
 from models.user import UserModel
 from models.item import ItemModel
 from tests.base_test import BaseTest
+from tests.integration.models.item_test import ItemTest
+from resources.item import Item
 import json
 
 class ItemTest(BaseTest):
@@ -74,7 +76,7 @@ class ItemTest(BaseTest):
         with self.app() as client:
             with self.app_context():
                 StoreModel('test').save_to_db()
-                resp = client.put('/item/test',
+                resp = client.put("/item/test",
                                   data={'price': 17.99, 'store_id'=1})
 
                 self.assertEqual(resp.status_code, 200)

@@ -21,7 +21,11 @@ class Item(Resource):
             return item.json()
         return {'message': 'Item not found'}, 404
 
-    def put(self, name):
+    def put(self, name: object) -> object:
+        """
+
+        :rtype: object
+        """
         if ItemModel.find_by_name(name):
             return {'message': "An item with name '{}' already exists.".format(name)}, 400
 
@@ -43,7 +47,11 @@ class Item(Resource):
 
         return {'message': 'Item deleted'}
 
-    def put(self, name):
+    def put(self, name: object) -> object:
+        """
+
+        :rtype: object
+        """
         data = Item.parser.parse_args()
 
         item = ItemModel.find_by_name(name)
